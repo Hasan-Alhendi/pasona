@@ -20,7 +20,7 @@ GestureDetector item({
         height: (mq.size.height -
                 appBar(title: '').preferredSize.height -
                 mq.padding.top) *
-            0.2,
+            0.15,
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),

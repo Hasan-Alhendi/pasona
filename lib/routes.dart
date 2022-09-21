@@ -4,7 +4,6 @@ import 'control/bindings/binding.dart';
 import 'view/exam_screen.dart';
 import 'view/lesson_screen.dart';
 import 'view/level_screen.dart';
-import 'view/pageview_screen.dart';
 import 'view/semester_screen.dart';
 import 'view/splash_screen.dart';
 import 'view/subject_screen.dart';
@@ -30,7 +29,6 @@ class Routes {
     GetPage(name: lesson, page: () => const LessonView(), binding: Binding()),
     GetPage(name: test, page: () => const TestView(), binding: Binding()),
     GetPage(name: exam, page: () => const ExamView(), binding: Binding()),
-    GetPage(name: pageView, page: () => PageViewScreen(), binding: Binding()),
     GetPage(
         name: splash, page: () => const SplashScreenView(), binding: Binding()),
   ];

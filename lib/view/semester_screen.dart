@@ -42,9 +42,9 @@ class SemesterView extends GetView<SemesterController> {
                           },
                           //fontSize: 23,
                         ),
-                        gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 200,
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent:
+                              MediaQuery.of(context).size.width * 0.5,
                         ),
                       ),
                     ),

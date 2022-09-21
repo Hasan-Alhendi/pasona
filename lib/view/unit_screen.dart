@@ -42,8 +42,9 @@ class UnitView extends GetView<UnitController> {
 
                         // viewBottomSheet(showVideo: () {}, exam: () {});
                       }),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200),
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent:
+                          MediaQuery.of(context).size.width * 0.5),
                 ),
               );
             }
