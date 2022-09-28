@@ -11,44 +11,48 @@ class UnitView extends GetView<UnitController> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        controller.unitList = [];
-        return true;
-      },
-      child: Scaffold(
-        appBar: appBar(title: "الوحدات"),
-        body: Obx(
-          () {
-            if (controller.isLoading.value == true) {
-              return const Center(child: CircularProgressIndicator());
-            } else {
-              return Directionality(
-                textDirection: TextDirection.rtl,
-                child: GridView.builder(
-                  itemCount: controller.unitList.length,
-                  itemBuilder: (context, index) => item(
-                      name: controller.unitList[index].unitName!,
-                      bottomLeft: Color(int.parse(
-                          controller.unitList[index].bottomLeftColor!)),
-                      topRight: Color(
-                          int.parse(controller.unitList[index].topRightColor!)),
-                      fontSize: 23,
-                      onTap: () {
-                        controller.unitId.value =
-                            controller.unitList[index].id!;
-                        Get.toNamed(Routes.lesson,
-                            arguments: controller.unitList[index].id!);
+    return Scaffold(
+      appBar: appBar(title: "الوحدات"),
+      body: Obx(
+        () {
+          if (controller.isLoading.value == true) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return unitsMethod(context);
+          }
+        },
+      ),
+    );
+  }
 
-                        // viewBottomSheet(showVideo: () {}, exam: () {});
-                      }),
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent:
-                          MediaQuery.of(context).size.width * 0.5),
-                ),
-              );
-            }
-          },
+  Directionality unitsMethod(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Center(
+        child: SizedBox(
+          //  width: MediaQuery.of(context).size.width,
+          child: GridView.builder(
+            itemCount: controller.unitList.length,
+            itemBuilder: (context, index) => item(
+                name: controller.unitList[index].unitName!,
+                bottomLeft: Color(
+                    int.parse(controller.unitList[index].bottomLeftColor!)),
+                topRight:
+                    Color(int.parse(controller.unitList[index].topRightColor!)),
+                fontSize: 32,
+                onTap: () {
+                  controller.unitId.value = controller.unitList[index].id!;
+                  Get.toNamed(Routes.lesson);
+
+                  // viewBottomSheet(showVideo: () {}, exam: () {});
+                }),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: MediaQuery.of(context).size.width * .5,
+              childAspectRatio: 1,
+              // mainAxisSpacing: 50,
+              //crossAxisSpacing: 20,
+            ),
+          ),
         ),
       ),
     );

@@ -6,7 +6,7 @@ import '../../model/services/level_servise.dart';
 class LevelController extends GetxController {
   var isLoading = true.obs;
   var levelId = 0.obs;
-  List<Level> levelList = <Level>[].obs;
+  RxList<Level> levelList = <Level>[].obs;
 
   @override
   void onInit() {
@@ -17,7 +17,7 @@ class LevelController extends GetxController {
   void fetchLevels() async {
     try {
       isLoading(true);
-      levelList = await LevelService.fetchLevels();
+      levelList.value = await LevelService.fetchLevels();
     } finally {
       isLoading(false);
     }

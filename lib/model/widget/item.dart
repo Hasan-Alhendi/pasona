@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'app_bar.dart';
@@ -21,7 +22,12 @@ GestureDetector item({
                 appBar(title: '').preferredSize.height -
                 mq.padding.top) *
             0.15,
-        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+        margin: EdgeInsets.symmetric(
+            vertical: (mq.size.height -
+                    appBar(title: '').preferredSize.height -
+                    mq.padding.top) *
+                0.008,
+            horizontal: mq.size.width * 0.015),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           gradient: LinearGradient(
@@ -48,31 +54,44 @@ GestureDetector item({
                   ),
                 ),
               Expanded(
-                child: Row(
-                  children: [
-                    /* const SizedBox(
-                      width: 20,
-                    ), */
-                    Expanded(
-                      child: Text(
-                        name,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: fontSize,
-                          fontFamily: 'Cocon Next Arabic',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: textMethod(name, fontSize),
               ),
             ],
           ),
         ),
       );
     }),
+  );
+}
+
+/* 
+Text textMethod1(String name, double fontSize) {
+  return Text(
+    name,
+    maxLines: 2,
+    overflow: TextOverflow.ellipsis,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: fontSize,
+      fontFamily: 'Cocon Next Arabic',
+    ),
+  );
+}
+
+ */
+AutoSizeText textMethod(String name, double fontSize) {
+  return AutoSizeText(
+    name,
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: fontSize,
+      fontFamily: 'Cocon Next Arabic',
+    ),
+    minFontSize: 18,
+    maxFontSize: fontSize,
+    maxLines: 4,
+    textAlign: TextAlign.center,
+    overflow: TextOverflow.ellipsis,
   );
 }

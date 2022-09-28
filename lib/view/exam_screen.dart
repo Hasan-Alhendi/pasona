@@ -11,9 +11,11 @@ class ExamView extends GetView<TestController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(title: "الإختبار"),
-      body: WebView(
-        initialUrl: Get.arguments,
-        javascriptMode: JavascriptMode.unrestricted,
+      body: SafeArea(
+        child: WebView(
+          initialUrl: Get.arguments,
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
       ),
     );
   }

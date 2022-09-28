@@ -6,7 +6,7 @@ import '../../model/services/subject_servise.dart';
 class SubjectController extends GetxController {
   var isLoading = true.obs;
   var subjectId = 0.obs;
-  List<Subject> subjectList = <Subject>[].obs;
+  RxList<Subject> subjectList = <Subject>[].obs;
 
   @override
   void onInit() {
@@ -17,7 +17,7 @@ class SubjectController extends GetxController {
   void fetchSubjects() async {
     try {
       isLoading(true);
-      subjectList = await SubjectService.fetchSubjects();
+      subjectList.value = await SubjectService.fetchSubjects();
     } finally {
       isLoading(false);
     }

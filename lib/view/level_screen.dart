@@ -29,12 +29,11 @@ class LevelView extends GetView<LevelController> {
                           controller.levelList[index].topRightColor!)),
                       num: controller.levelList[index].levelPic!,
                       path: 'assets/num',
-                      fontSize: 28,
+                      fontSize: 32,
                       onTap: () {
                         controller.levelId.value =
                             controller.levelList[index].id!;
-                        Get.toNamed(Routes.semester,
-                            arguments: controller.levelList[index].id!);
+                        Get.toNamed(Routes.semester);
                       }));
             }
           },

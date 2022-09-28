@@ -11,46 +11,39 @@ class LessonView extends GetView<LessonController> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        controller.lessonList = [];
-        return true;
-      },
-      child: Scaffold(
-        appBar: appBar(title: "دروس المادة"),
-        body: SafeArea(
-          child: Obx(
-            () {
-              if (controller.isLoading.value == true) {
-                return const Center(child: CircularProgressIndicator());
-              } else {
-                return Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: ListView.builder(
-                    itemCount: controller.lessonList.length,
-                    itemBuilder: (context, index) {
-                      return item(
-                          name: controller.lessonList[index].lessonName!,
-                          fontSize: 23,
-                          bottomLeft: Color(int.parse(
-                              controller.lessonList[index].bottomLeftColor!)),
-                          topRight: Color(int.parse(
-                              controller.lessonList[index].topRightColor!)),
-                          //  num: controller.lessonList[index].subjectPic!,
-                          onTap: () {
-                            controller.lessonId.value =
-                                controller.lessonList[index].id!;
-                            Get.toNamed(Routes.test,
-                                arguments: controller.lessonList[index].id!);
+    return Scaffold(
+      appBar: appBar(title: "دروس المادة"),
+      body: SafeArea(
+        child: Obx(
+          () {
+            if (controller.isLoading.value == true) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListView.builder(
+                  itemCount: controller.lessonList.length,
+                  itemBuilder: (context, index) {
+                    return item(
+                        name: controller.lessonList[index].lessonName!,
+                        fontSize: 30,
+                        bottomLeft: Color(int.parse(
+                            controller.lessonList[index].bottomLeftColor!)),
+                        topRight: Color(int.parse(
+                            controller.lessonList[index].topRightColor!)),
+                        //  num: controller.lessonList[index].subjectPic!,
+                        onTap: () {
+                          controller.lessonId.value =
+                              controller.lessonList[index].id!;
+                          Get.toNamed(Routes.test);
 
-                            // viewBottomSheet(showVideo: () {}, exam: () {});
-                          });
-                    },
-                  ),
-                );
-              }
-            },
-          ),
+                          // viewBottomSheet(showVideo: () {}, exam: () {});
+                        });
+                  },
+                ),
+              );
+            }
+          },
         ),
       ),
     );

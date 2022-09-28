@@ -6,8 +6,8 @@ import '../../model/services/semester_servise.dart';
 class SemesterController extends GetxController {
   var isLoading = true.obs;
   var semesterId = 0.obs;
-
-  List<Semester> semesterList = <Semester>[].obs;
+  RxList<int> v = <int>[].obs;
+  RxList<Semester> semesterList = <Semester>[].obs;
 
   @override
   void onInit() {
@@ -18,7 +18,7 @@ class SemesterController extends GetxController {
   void fetchSemesters() async {
     try {
       isLoading(true);
-      semesterList = await SemesterService.fetchSemesters();
+      semesterList.value = await SemesterService.fetchSemesters();
     } finally {
       isLoading(false);
     }

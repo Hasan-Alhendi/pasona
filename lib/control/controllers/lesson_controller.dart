@@ -6,7 +6,7 @@ import '../../model/services/lesson_servise.dart';
 class LessonController extends GetxController {
   var isLoading = true.obs;
   var lessonId = 0.obs;
-  List<Lesson> lessonList = <Lesson>[].obs;
+  RxList<Lesson> lessonList = <Lesson>[].obs;
 
   @override
   void onInit() {
@@ -17,7 +17,7 @@ class LessonController extends GetxController {
   void fetchLessons() async {
     try {
       isLoading(true);
-      lessonList = await LessonService.fetchLessons();
+      lessonList.value = await LessonService.fetchLessons();
     } finally {
       isLoading(false);
     }
