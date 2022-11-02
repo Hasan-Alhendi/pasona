@@ -54,8 +54,6 @@ GestureDetector item({
                     child: Center(
                       child: SvgPicture.asset(
                         "$path/$num.svg",
-                        //height: 70,
-                        // width: 45,
                       ),
                     ),
                   ),
