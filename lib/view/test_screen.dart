@@ -35,7 +35,8 @@ class TestView extends GetView<TestController> {
                         onTap: () {
                           controller.testId.value =
                               controller.testList[index].id!;
-                          Get.toNamed(Routes.exam);
+                          Get.toNamed(Routes.exam,
+                              arguments: controller.testList[index].link!);
 
                           // viewBottomSheet(showVideo: () {}, exam: () {});
                         });

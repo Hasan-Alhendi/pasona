@@ -31,7 +31,6 @@ class LessonView extends GetView<LessonController> {
                             controller.lessonList[index].bottomLeftColor!)),
                         topRight: Color(int.parse(
                             controller.lessonList[index].topRightColor!)),
-                        //  num: controller.lessonList[index].subjectPic!,
                         onTap: () {
                           controller.lessonId.value =
                               controller.lessonList[index].id!;
