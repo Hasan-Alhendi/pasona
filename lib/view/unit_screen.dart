@@ -31,7 +31,7 @@ class UnitView extends GetView<UnitController> {
       child: Center(
         child: SizedBox(
           //  width: MediaQuery.of(context).size.width,
-          child: GridView.builder(
+          child: ListView.builder(
             itemCount: controller.unitList.length,
             itemBuilder: (context, index) => item(
                 name: controller.unitList[index].unitName!,
@@ -39,19 +39,17 @@ class UnitView extends GetView<UnitController> {
                     int.parse(controller.unitList[index].bottomLeftColor!)),
                 topRight:
                     Color(int.parse(controller.unitList[index].topRightColor!)),
-                fontSize: 32,
+                fontSize: 30,
                 onTap: () {
                   controller.unitId.value = controller.unitList[index].id!;
                   Get.toNamed(Routes.lesson);
-
-                  // viewBottomSheet(showVideo: () {}, exam: () {});
                 }),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            /* gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: MediaQuery.of(context).size.width * .5,
               childAspectRatio: 1,
               // mainAxisSpacing: 50,
               //crossAxisSpacing: 20,
-            ),
+            ), */
           ),
         ),
       ),

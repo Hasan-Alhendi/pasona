@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'app_bar.dart';
 
@@ -47,10 +48,14 @@ GestureDetector item({
               if (num != null && path != null)
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
-                  child: Image.asset(
-                    "$path/$num.png",
-                    height: 70,
-                    width: 45,
+                  child: SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: Center(
+                      child: SvgPicture.asset(
+                        "$path/$num.svg",
+                      ),
+                    ),
                   ),
                 ),
               Expanded(

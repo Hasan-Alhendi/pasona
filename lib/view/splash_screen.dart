@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../control/controllers/splash_controller.dart';
@@ -20,13 +21,15 @@ class SplashScreenView extends GetView<SplashController> {
   }
 
   initScreen(BuildContext context) {
-    AssetImage assetImage = const AssetImage("assets/icon.png");
+    /*  AssetImage assetImage = const AssetImage("assets/Basona.png");
     Image image = Image(
       image: assetImage,
-      height: 200.0,
-      width: 250.0,
+      // height: 500.0,
+      //width: 250.0,
+    ); */
+    SvgPicture image = SvgPicture.asset(
+      'assets/Basona Logo.svg',
     );
-
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
@@ -42,22 +45,19 @@ class SplashScreenView extends GetView<SplashController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.045,
+                  right: MediaQuery.of(context).size.width * 0.045,
+                  top: MediaQuery.of(context).size.height * 0.07),
               child: image,
             ),
-            const Padding(padding: EdgeInsets.only(top: 20.0)),
-            const Text(
-              "بسونة",
-              style: TextStyle(
-                fontSize: 32.0,
-                color: Colors.white,
-                fontFamily: 'Cocon Next Arabic',
-              ),
+            const SizedBox(
+              height: 30,
             ),
-            const Padding(
-                padding: EdgeInsets.only(top: 20.0)), // padding top for button
             const CircularProgressIndicator(
-              backgroundColor: Colors.white,
-              strokeWidth: 1,
+              // backgroundColor: Colors.white,
+              color: Color.fromARGB(180, 3, 35, 100),
+              strokeWidth: 3,
             )
           ],
         )
